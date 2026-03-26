@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Support System - Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f7f6; }
+        .card { border-radius: 15px; border: none; }
+        .btn-primary { background-color: #2c3e50; border: none; }
+        .btn-primary:hover { background-color: #34495e; }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h3 class="mb-0">Asistente de Compras ML</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-muted small">Ingresa los datos del artículo para obtener el proveedor recomendado según el costo histórico más bajo.</p>
+                        
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label class="form-label font-weight-bold">Nombre del Artículo</label>
+                                <input type="text" name="item" class="form-control" placeholder="Ej: Laptop" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label font-weight-bold">Categoría</label>
+                                <input type="text" name="category" class="form-control" placeholder="Ej: Electronics" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-2">Consultar Proveedor Óptimo</button>
+                        </form>
+
+                        {% if prediction %}
+                        <div class="alert alert-success mt-4 animate__animated animate__fadeIn">
+                            <h5 class="alert-heading text-center">Proveedor Sugerido:</h5>
+                            <hr>
+                            <p class="mb-0 text-center fs-4"><strong>{{ prediction }}</strong></p>
+                        </div>
+                        {% endif %}
+
+                        {% if error %}
+                        <div class="alert alert-warning mt-4 text-center">
+                            {{ error }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <p class="text-center mt-3 text-muted small">Desarrollado con Flask y Scikit-Learn</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
