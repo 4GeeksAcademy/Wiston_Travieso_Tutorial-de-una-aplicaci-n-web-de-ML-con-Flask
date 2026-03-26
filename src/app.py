@@ -6,10 +6,10 @@ import pandas as pd
 app = Flask(__name__)
 
 # 1. Cargar el modelo y los encoders (traductores)
-model = joblib.load('model.pkl')
-le_item = joblib.load('le_item.pkl')
-le_cat = joblib.load('le_cat.pkl')
-le_target = joblib.load('le_target.pkl')
+model = joblib.load('../models/model.pkl')
+le_item = joblib.load('../models/le_item.pkl')
+le_cat = joblib.load('../models/le_cat.pkl')
+le_target = joblib.load('../models/le_target.pkl')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
